@@ -1,0 +1,15 @@
+[Unit]
+Description=uWSGI service
+After=syslog.target
+ 
+[Service]
+ExecStart=/home/ubuntu/note/bin/uwsgi -i /srv/myblog-test/.config/uwsgi/mynote.ini
+ 
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+ 
+[Install]
+WantedBy=multi-user.target
